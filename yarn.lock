@@ -9967,6 +9967,10 @@ __metadata:
     "@mux/mux-player-react": "npm:^2.4.1"
     "@rehooks/local-storage": "npm:^2.4.5"
     "@rrweb/types": "workspace:*"
+    "@statsig/js-client": "npm:^3.0.0"
+    "@statsig/react-bindings": "npm:^3.0.0"
+    "@statsig/session-replay": "npm:^3.0.0"
+    "@statsig/web-analytics": "npm:^3.0.0"
     "@stripe/stripe-js": "npm:^1.32.0"
     "@svgr/cli": "npm:^5.5.0"
     "@svgr/core": "npm:^7.0.0"
@@ -16934,7 +16938,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@rrweb/types@workspace:*, @rrweb/types@workspace:rrweb/packages/types":
+"@rrweb/types@npm:^2.0.0-alpha.12, @rrweb/types@workspace:*, @rrweb/types@workspace:rrweb/packages/types":
   version: 0.0.0-use.local
   resolution: "@rrweb/types@workspace:rrweb/packages/types"
   dependencies:
@@ -17912,6 +17916,54 @@ __metadata:
     follow-redirects: "npm:^1.15.6"
     tar-fs: "npm:^3.0.6"
   checksum: 10/99fdb1480af62ff3617dc868f9d3c93474a41621b06efcf25650d039c79fabb1097dacc3266f77e76984518b28296999bd33e551737b5a980b01de998d27df5e
+  languageName: node
+  linkType: hard
+
+"@statsig/client-core@npm:3.0.0":
+  version: 3.0.0
+  resolution: "@statsig/client-core@npm:3.0.0"
+  checksum: 10/8d3da4445e5b6fe77dafe23d7c46e67239f12f3d88d14fdff3c675329a21c21616131e68b7848b6eb73b697ecb3e21bc0b82f5ce5a841dddbc2ad53518f53650
+  languageName: node
+  linkType: hard
+
+"@statsig/js-client@npm:3.0.0, @statsig/js-client@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@statsig/js-client@npm:3.0.0"
+  dependencies:
+    "@statsig/client-core": "npm:3.0.0"
+  checksum: 10/45412754ec8318b63940c503ee14e9edcc9b63ea7c9b6abe18983680bb82c1bc27078a7be1497198ee2779354f4768f2638047910748a1dbe6f2b87a86b551b3
+  languageName: node
+  linkType: hard
+
+"@statsig/react-bindings@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@statsig/react-bindings@npm:3.0.0"
+  dependencies:
+    "@statsig/client-core": "npm:3.0.0"
+    "@statsig/js-client": "npm:3.0.0"
+  peerDependencies:
+    react: ^16.6.3 || ^17.0.0 || ^18.0.0
+  checksum: 10/2236f7ecf74b0f82f4e7d6a748ef4e22e38e78af59c9015b1bb17015446b49381c8d0a583b14512849f31dd7936474f24fec36c2bb7ffc7cc4be3f098873cb41
+  languageName: node
+  linkType: hard
+
+"@statsig/session-replay@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@statsig/session-replay@npm:3.0.0"
+  dependencies:
+    "@statsig/client-core": "npm:3.0.0"
+    rrweb: "npm:2.0.0-alpha.12"
+  checksum: 10/1c5a8160fa8a6ad34f7fa03677d62b6f941bc3ffe3b3e7274799306ad5e3966d53a899ac510580ef1a39c23abf4b7178bc7f81ace16c0ad630bafefb6eda1343
+  languageName: node
+  linkType: hard
+
+"@statsig/web-analytics@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@statsig/web-analytics@npm:3.0.0"
+  dependencies:
+    "@statsig/client-core": "npm:3.0.0"
+    "@statsig/js-client": "npm:3.0.0"
+  checksum: 10/fa04b10f947d96550ff0dd5cdad0740ddbfe2fd35234bd96387ae868171dd48dc107c34b4a0e699523db0b9daec09bcc61ab5a71d1a33c109dfb5c9fa9e68c21
   languageName: node
   linkType: hard
 
@@ -51914,7 +51966,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"rrdom@workspace:*, rrdom@workspace:rrweb/packages/rrdom":
+"rrdom@npm:^2.0.0-alpha.12, rrdom@workspace:*, rrdom@workspace:rrweb/packages/rrdom":
   version: 0.0.0-use.local
   resolution: "rrdom@workspace:rrweb/packages/rrdom"
   dependencies:
@@ -51979,7 +52031,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"rrweb-snapshot@workspace:*, rrweb-snapshot@workspace:rrweb/packages/rrweb-snapshot":
+"rrweb-snapshot@npm:^2.0.0-alpha.12, rrweb-snapshot@workspace:*, rrweb-snapshot@workspace:rrweb/packages/rrweb-snapshot":
   version: 0.0.0-use.local
   resolution: "rrweb-snapshot@workspace:rrweb/packages/rrweb-snapshot"
   dependencies:
@@ -51997,6 +52049,22 @@ __metadata:
     vitest: "npm:^1.4.0"
   languageName: unknown
   linkType: soft
+
+"rrweb@npm:2.0.0-alpha.12":
+  version: 2.0.0-alpha.12
+  resolution: "rrweb@npm:2.0.0-alpha.12"
+  dependencies:
+    "@rrweb/types": "npm:^2.0.0-alpha.12"
+    "@types/css-font-loading-module": "npm:0.0.7"
+    "@xstate/fsm": "npm:^1.4.0"
+    base64-arraybuffer: "npm:^1.0.1"
+    fflate: "npm:^0.4.4"
+    mitt: "npm:^3.0.0"
+    rrdom: "npm:^2.0.0-alpha.12"
+    rrweb-snapshot: "npm:^2.0.0-alpha.12"
+  checksum: 10/36b4516849184241a722a4cc1cddc494938940519b845cc6cea165d9c84a0686f8ebf40792bfd760f29c9e5f4af90620734b6e12c19de827926fc345439af2a7
+  languageName: node
+  linkType: hard
 
 "rrweb@workspace:*, rrweb@workspace:rrweb/packages/rrweb":
   version: 0.0.0-use.local

@@ -2,6 +2,7 @@ import { Metadata } from '@highlight-run/client'
 import { H } from 'highlight.run'
 import * as rudderanalytics from 'rudder-sdk-js'
 import { useLDClient, type LDClient } from 'launchdarkly-react-client-sdk'
+import { useStatsigClient, type StatsigClient } from '@statsig/react-bindings'
 
 import { DISABLE_ANALYTICS } from '@/constants'
 import { omit } from 'lodash'
@@ -19,6 +20,7 @@ const rudderstackReserved = [
 ]
 let rudderstackInitialized = false
 let ldClient: LDClient | undefined
+let statsigClient: StatsigClient | undefined
 
 // necessary to ensure DISABLE_ANALYTICS value is not removed from constants.ts by tree-shaking
 const isDisabled = DISABLE_ANALYTICS === 'true'
@@ -26,6 +28,7 @@ console.debug(`highlight analytics`, { DISABLE_ANALYTICS, isDisabled })
 
 const useAnalytics = () => {
 	ldClient = useLDClient()
+	statsigClient = useStatsigClient().client as StatsigClient
 }
 
 const initialize = () => {
@@ -67,6 +70,11 @@ const track = (event: string, metadata?: rudderanalytics.apiObject) => {
 	rudderanalytics.track(event, omit(metadata, rudderstackReserved))
 
 	ldClient?.track(event, metadata)
+	statsigClient?.logEvent(
+		event,
+		undefined,
+		metadata as Record<string, string>,
+	)
 }
 
 const identify = (email: string, traits?: rudderanalytics.apiObject) => {
@@ -97,6 +105,7 @@ const identify = (email: string, traits?: rudderanalytics.apiObject) => {
 		key: email,
 		...traits,
 	})
+	statsigClient?.updateUserSync({ email, ...traits })
 }
 
 const page = (name: string, properties?: rudderanalytics.apiObject) => {

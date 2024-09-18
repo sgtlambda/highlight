@@ -52,7 +52,7 @@ import { SIGN_IN_ROUTE } from '@/pages/Auth/AuthRouter'
 import { authRedirect } from '@/pages/Auth/utils'
 import { onlyAllowHighlightStaff } from '@/util/authorization/authorizationUtils'
 import { omit } from 'lodash'
-import HighlightLDProvider from '@context/LDContext'
+import FeatureFlagProvider from '@context/FeatureFlagContext'
 
 document.body.className = 'highlight-light-theme'
 
@@ -169,7 +169,7 @@ const App = () => {
 	return (
 		<ErrorBoundary>
 			<ApolloProvider client={client}>
-				<HighlightLDProvider>
+				<FeatureFlagProvider>
 					<SkeletonTheme
 						baseColor="var(--color-gray-200)"
 						highlightColor="var(--color-primary-background)"
@@ -195,7 +195,7 @@ const App = () => {
 							</BrowserRouter>
 						</AppLoadingContext>
 					</SkeletonTheme>
-				</HighlightLDProvider>
+				</FeatureFlagProvider>
 			</ApolloProvider>
 		</ErrorBoundary>
 	)
